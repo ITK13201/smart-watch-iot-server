@@ -1,0 +1,42 @@
+name: Docker
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+
+jobs:
+  nginx:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Build: checkout"
+        uses: actions/checkout@v2
+      - name: "Build: docker image"
+        uses: docker/build-push-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: ITK13201/smart-watch-iot-server
+          tags: latest
+          context: .
+          file: ./docker/nginx/Dockerfile
+
+  backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Build: checkout"
+        uses: actions/checkout@v2
+      - name: "Build: docker image"
+        uses: docker/build-push-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: ITK13201/smart-watch-iot-server
+          tags: latest
+          context: .
+          file: ./docker/backend/Dockerfile
