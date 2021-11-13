@@ -1,0 +1,4 @@
+2021-11-14 01:47:21,502 django.utils.autoreload:637 run_with_reloader [INFO]: Watching for file changes with StatReloader
+2021-11-14 01:48:32,182 django.utils.autoreload:637 run_with_reloader [INFO]: Watching for file changes with StatReloader
+2021-11-14 02:25:27,097 django.request:224 log_response [WARNING]: Not Found: /favicon.ico
+2021-11-14 03:08:25,100 django.utils.autoreload:637 run_with_reloader [INFO]: Watching for file changes with StatReloader

@@ -1,0 +1,12 @@
+*.pyc
+__pycache__/
+media
+*.env
+.venv
+
+.vscode
+*.code-workspace
+.idea/
+tmp/
+deploy/
+production/

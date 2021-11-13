@@ -1,0 +1,55 @@
+version: "3"
+
+services:
+    nginx:
+        build:
+            dockerfile: ./docker/nginx/Dockerfile
+            context: .
+        ports:
+            - 8000:8000
+        environment:
+            TZ: "Asia/Tokyo"
+        volumes:
+            - ./docker/nginx/conf.d:/etc/nginx/conf.d
+            - ./log/nginx:/var/log/nginx
+            - ./assets:/assets
+        depends_on:
+            - backend
+    backend:
+        build:
+            context: .
+            dockerfile: ./docker/backend/Dockerfile
+            target: development
+        command: python manage.py runserver 0.0.0.0:8080
+        volumes:
+            - ./backend:/backend
+            - ./log/backend:/var/log/backend
+            - ./assets:/assets
+        ports:
+            - 8080:8080
+        environment:
+            DATABASE_DB: "smart_watch_iot"
+            DATABASE_USER: "user"
+            DATABASE_PASSWORD: "password"
+            DATABASE_HOST: "mysql"
+            DATABASE_PORT: "3306"
+        env_file: ./.env
+        depends_on:
+            - mysql
+    mysql:
+        build:
+            dockerfile: ./docker/mysql/Dockerfile
+            context: .
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: "root"
+            MYSQL_USER: "user"
+            MYSQL_PASSWORD: "password"
+            MYSQL_DATABASE: "smart_watch_iot"
+            TZ: "Asia/Tokyo"
+        ports: 
+            - 3306:3306
+        volumes:
+            - ./docker/mysql/conf.d:/etc/mysql/conf.d
+            - ./docker/mysql/data:/var/lib/mysql
+            - ./log/mysql:/var/log/mysql
