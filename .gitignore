@@ -3,6 +3,7 @@ __pycache__/
 media
 *.env
 .venv
+*.log
 
 .vscode
 *.code-workspace
