@@ -20,7 +20,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           tag_with_sha: true
-          tags: ghcr.io/${{ github.repository_owner }}/smart-watch-iot-server:latest
+          tags: latest
           dockerfile: ./docker/nginx/Dockerfile
 
   backend:
@@ -38,3 +38,4 @@ jobs:
           tag_with_sha: true
           tags: latest
           dockerfile: ./docker/backend/Dockerfile
+          target: production
