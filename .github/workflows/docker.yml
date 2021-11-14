@@ -24,8 +24,8 @@ jobs:
           push: true
           context: .
           tags: |
-            ghcr.io/itk13201/smart-watch-iot-server_backend:latest
-            ghcr.io/itk13201/smart-watch-iot-server_backend:${{ github.sha }}
+            ghcr.io/itk13201/smart-watch-iot-server_nginx:${{ github.sha }}
+            ghcr.io/itk13201/smart-watch-iot-server_nginx:latest
           file: ./docker/nginx/Dockerfile
 
   backend:
@@ -45,7 +45,7 @@ jobs:
           push: true
           context: .
           tags: |
-            ghcr.io/itk13201/smart-watch-iot-server_backend:latest
             ghcr.io/itk13201/smart-watch-iot-server_backend:${{ github.sha }}
+            ghcr.io/itk13201/smart-watch-iot-server_backend:latest
           file: ./docker/backend/Dockerfile
           target: production
