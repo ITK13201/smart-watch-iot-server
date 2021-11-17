@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # created apps
     "users.apps.UsersConfig",
+    "fitbit_client.apps.FitbitClientConfig",
 ]
 
 MIDDLEWARE = [
@@ -145,3 +146,11 @@ AUTHENTICATION_BACKENDS = (
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# =====================================
+# PERSONAL ENVIRONMENT VARIABLES
+# =====================================
+FITBIT_CLIENT_ID = os.environ.get("FITBIT_CLIENT_ID")
+FITBIT_CLIENT_SECRET = os.environ.get("FITBIT_CLIENT_SECRET")
+FITBIT_TOKEN_FILE_PATH = os.environ.get("FITBIT_TOKEN_FILE_PATH")

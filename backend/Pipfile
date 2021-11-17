@@ -12,6 +12,9 @@ pillow = "*"
 djangorestframework = "*"
 uwsgi = "*"
 typed-ast = "*"
+fitbit = "*"
+pandas = "*"
+matplotlib = "*"
 
 [dev-packages]
 black = "==20.8b1"

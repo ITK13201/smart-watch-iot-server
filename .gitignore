@@ -1,13 +1,24 @@
+# python files
 *.pyc
 __pycache__/
-media
-*.env
 .venv
+
+# media files
+media
+
+# secret files
+*.env
+*.tok
+
+# log files
 *.log
 
+# Editor / IDE settings files
 .vscode
 *.code-workspace
 .idea/
+
+# not required staging directories
 tmp/
 deploy/
 production/

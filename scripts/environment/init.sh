@@ -21,6 +21,9 @@ mkdir -p ${PROJECT_DIR}/log/backend
 touch ${PROJECT_DIR}/log/backend/app.log
 touch ${PROJECT_DIR}/log/backend/sql.log
 
+# init fitbit token files
+touch ${PROJECT_DIR}/docker/backend/fitbit.tok
+
 
 # init log file permission
 find ${PROJECT_DIR}/log -type f -print | xargs chmod 666

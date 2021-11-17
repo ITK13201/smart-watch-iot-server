@@ -18,8 +18,10 @@ COPY ./backend/Pipfile.lock /backend/Pipfile.lock
 RUN pipenv install --ignore-pipfile --deploy --system --dev
 
 COPY ./backend /backend
-RUN cd /var/log/backend && \
-    touch app.log sql.log
+RUN cd /var/log/backend \
+    && touch app.log sql.log
+
+RUN mkdir -p /etc/backend
 
 
 FROM python:3.9-buster AS production
@@ -42,5 +44,7 @@ COPY ./backend/Pipfile.lock /backend/Pipfile.lock
 RUN pipenv install --ignore-pipfile --deploy --system
 
 COPY ./backend /backend
-RUN cd /var/log/backend && \
-    touch app.log
+RUN cd /var/log/backend \
+    && touch app.log
+
+RUN mkdir -p /etc/backend

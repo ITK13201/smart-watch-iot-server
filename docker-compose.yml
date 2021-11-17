@@ -25,6 +25,7 @@ services:
             - ./backend:/backend
             - ./log/backend:/var/log/backend
             - ./assets:/assets
+            - ./docker/backend/conf:/etc/backend/
         ports:
             - 8080:8080
         environment:
