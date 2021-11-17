@@ -64,9 +64,9 @@ LOGGING = {
             "level": "INFO",
             "propagate": False,
         },
-        'django.db.backends': {
-            'handlers': ['console', "file_sql"],
-            'level': 'DEBUG',
+        "django.db.backends": {
+            "handlers": ["console", "file_sql"],
+            "level": "DEBUG",
         },
         "": {
             "handlers": ["console", "file_app"],
