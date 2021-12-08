@@ -2,16 +2,21 @@ name: Docker
 
 on:
   push:
-    branches:
-    - master
-  pull_request:
+    tags:
+      - 'v*'
 
 jobs:
   nginx:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Get docker metadata
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ghcr.io/itk13201/smart-watch-iot-server_nginx
       - name: "Login to ghcr.io registry"
         uses: docker/login-action@v1
         with:
@@ -23,16 +28,20 @@ jobs:
         with:
           push: true
           context: .
-          tags: |
-            ghcr.io/itk13201/smart-watch-iot-server_nginx:${{ github.sha }}
-            ghcr.io/itk13201/smart-watch-iot-server_nginx:latest
+          tags: ${{ steps.meta.outputs.tags }}
           file: ./docker/nginx/Dockerfile
 
   backend:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Get docker metadata
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ghcr.io/itk13201/smart-watch-iot-server_backend
       - name: "Login to ghcr.io registry"
         uses: docker/login-action@v1
         with:
@@ -44,8 +53,6 @@ jobs:
         with:
           push: true
           context: .
-          tags: |
-            ghcr.io/itk13201/smart-watch-iot-server_backend:${{ github.sha }}
-            ghcr.io/itk13201/smart-watch-iot-server_backend:latest
+          tags: ${{ steps.meta.outputs.tags }}
           file: ./docker/backend/Dockerfile
           target: production
