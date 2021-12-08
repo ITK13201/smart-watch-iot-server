@@ -29,6 +29,7 @@ jobs:
           push: true
           context: .
           tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
           file: ./docker/nginx/Dockerfile
 
   backend:
@@ -54,5 +55,6 @@ jobs:
           push: true
           context: .
           tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
           file: ./docker/backend/Dockerfile
           target: production
