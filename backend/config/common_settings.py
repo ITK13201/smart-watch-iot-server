@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # created apps
     "users.apps.UsersConfig",
     "fitbit_client.apps.FitbitClientConfig",
+    "gps.apps.GpsConfig",
 ]
 
 MIDDLEWARE = [
