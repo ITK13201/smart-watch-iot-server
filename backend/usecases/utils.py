@@ -19,4 +19,3 @@ def convert_datetime_timezone(data: dict) -> dict:
 def convert_utc_to_jst(dt_utc: datetime.datetime) -> datetime.datetime:
     dt_jst = dt_utc.astimezone(gettz(settings.TIME_ZONE))
     return dt_jst
-

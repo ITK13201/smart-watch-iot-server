@@ -24,7 +24,7 @@ class GpsApiSerializer(serializers.Serializer):
             occurred_at=validated_data.get("occurred_at"),
             location_map_image_url=validated_data.get("location_map_image_url"),
             location_map_url=validated_data.get("location_map_url"),
-            trigger_type=trigger_type
+            trigger_type=trigger_type,
         )
         gps.save()
 
