@@ -24,23 +24,26 @@ LOGGING = {
         "simple": {
             "format": "%(asctime)s %(name)s:%(lineno)s %(funcName)s [%(levelname)s]: %(message)s"
         },
+        "myformat": {
+            "format": "[%(levelname)s] %(asctime)s %(name)s:%(lineno)s %(funcName)s %(module)s %(process)d %(thread)d:  %(message)s"
+        },
     },
     "handlers": {
         "console": {
             "level": "INFO",
             "class": "logging.StreamHandler",
-            "formatter": "simple",
+            "formatter": "myformat",
         },
         "file_app": {
             "level": "INFO",
             "class": "logging.FileHandler",
-            "formatter": "simple",
+            "formatter": "myformat",
             "filename": "/var/log/backend/app.log",
         },
         "file_sql": {
             "level": "INFO",
             "class": "logging.FileHandler",
-            "formatter": "simple",
+            "formatter": "myformat",
             "filename": "/var/log/backend/sql.log",
         },
         "django.server": {
