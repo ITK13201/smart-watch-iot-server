@@ -19,6 +19,7 @@ class GpsAPIView(APIView):
 
     def post(self, request: Request) -> Response:
         data = request.data
+        logger.info(data)
 
         serializer = GpsApiSerializer(data=data)
         if serializer.is_valid():
@@ -31,4 +32,5 @@ class GpsAPIView(APIView):
                 status=status.HTTP_201_CREATED,
             )
         else:
+            logger.error(serializer.errors)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
