@@ -9,7 +9,9 @@ logger = logging.getLogger(__name__)
 
 
 class GpsApiSerializer(serializers.Serializer):
-    occurred_at = serializers.DateTimeField(required=True)
+    occurred_at = serializers.DateTimeField(
+        input_formats=["iso-8601", "%B %d, %Y at %I:%M%p"], required=True
+    )
     location_map_image_url = serializers.CharField(required=False)
     location_map_url = serializers.CharField(required=False)
     entered_or_exited = serializers.CharField(required=True)
