@@ -11,12 +11,12 @@ from django.core.validators import RegexValidator
 logger = logging.getLogger(__name__)
 
 STATUS_VALIDATOR = RegexValidator(
-    regex="(inactive|active)", message='Status param must be "(inactive|active)"'
+    regex="^(inactive|active)$", message="Status param must be inactive/active"
 )
 
 
 class StatusesApiPOSTSerializer(serializers.Serializer):
-    status = serializers.CharField()
+    status = serializers.CharField(validators=[STATUS_VALIDATOR], required=True)
 
     def save(self) -> Status:
         validated_data = self.validated_data
