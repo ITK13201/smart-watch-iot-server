@@ -7,7 +7,7 @@ from musics.models import Music
 logger = logging.getLogger(__name__)
 
 
-class MusicApiPOSTSerializer(serializers.Serializer):
+class MusicsApiPOSTSerializer(serializers.Serializer):
     file_path = serializers.CharField(required=True)
     url = serializers.CharField(required=True)
     bpm = serializers.IntegerField(required=True)
