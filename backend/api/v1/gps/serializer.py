@@ -21,7 +21,6 @@ class GpsApiSerializer(serializers.Serializer):
         logger.info(validated_data)
 
         trigger_type = self._get_trigger_type(validated_data.get("entered_or_exited"))
-
         gps = Gps(
             occurred_at=validated_data.get("occurred_at"),
             location_map_image_url=validated_data.get("location_map_image_url"),
