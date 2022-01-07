@@ -9,15 +9,12 @@ class MusicAdmin(admin.ModelAdmin):
         "file_path",
         "url",
         "bpm",
+        "length",
         "created_at",
         "updated_at",
     )
     ordering = ("file_path",)
-    fields = (
-        "file_path",
-        "url",
-        "bpm",
-    )
+    fields = ("file_path", "url", "bpm", "length")
 
 
 admin.site.register(Music, MusicAdmin)

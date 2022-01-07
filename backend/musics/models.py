@@ -8,7 +8,8 @@ class Music(models.Model):
         _("file path"), max_length=512, blank=False, null=False
     )
     url = models.CharField(_("url"), max_length=512, blank=False, null=False)
-    bpm = models.IntegerField(_("bpm"), blank=False, null=False)
+    bpm = models.FloatField(_("bpm"), blank=False, null=False)
+    length = models.FloatField(_("length [sec]"), default=0.0, blank=False, null=False)
     created_at = models.DateTimeField(_("created at"), auto_now_add=True)
     updated_at = models.DateTimeField(_("updated at"), auto_now=True)
 
