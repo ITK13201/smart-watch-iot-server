@@ -5,7 +5,7 @@ PROJECT_DIR=../..
 cd `dirname $0`
 
 # init environment variables
-# cp -v ${PROJECT_DIR}/.env.example ${PROJECT_DIR}/.env
+cp -v ${PROJECT_DIR}/.env.example ${PROJECT_DIR}/.env
 
 # init mysql log files
 mkdir -p ${PROJECT_DIR}/log/mysql

@@ -14,7 +14,13 @@ git clone git@github.com:ITK13201/smart-watch-iot-server.git
 cd smart-watch-iot-server
 ```
 
-### 2. Build
+### 2. Init environments
+
+```shell
+./scripts/environment/init.sh
+```
+
+### 3. Build
 
 ```shell
 docker-compose build
