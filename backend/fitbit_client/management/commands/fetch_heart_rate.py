@@ -12,9 +12,9 @@ class Command(BaseCommand):
     help = "update fitbit token"
 
     def handle(self, *args, **options):
-        TODAY = "2022-01-06"
+        TODAY = "2022-01-09"
         hr = self.get_heart_rate(date=TODAY, detail_level="1sec")
-        print(hr)
+        print(hr[-20:])
 
         # ここからグラフ描画-------------------------------------
         # フォントの種類とサイズを設定する。

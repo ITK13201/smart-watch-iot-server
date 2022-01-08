@@ -2,7 +2,13 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
+class MusicsQuerySet(models.QuerySet):
+    pass
+
+
 class Music(models.Model):
+    objects = MusicsQuerySet.as_manager()
+
     id = models.BigAutoField(primary_key=True, editable=False)
     file_path = models.CharField(
         _("file path"), max_length=512, blank=False, null=False
