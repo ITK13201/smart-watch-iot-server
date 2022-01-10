@@ -154,6 +154,13 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # =====================================
 # PERSONAL ENVIRONMENT VARIABLES
 # =====================================
+
+# fitbit environments
 FITBIT_CLIENT_ID = os.environ.get("FITBIT_CLIENT_ID")
 FITBIT_CLIENT_SECRET = os.environ.get("FITBIT_CLIENT_SECRET")
 FITBIT_TOKEN_FILE_PATH = os.environ.get("FITBIT_TOKEN_FILE_PATH")
+
+# raspy api environments
+RASPI_API_USER_USERNAME = os.environ.get("RASPI_API_USER_USERNAME")
+RASPI_API_USER_PASSWORD = os.environ.get("RASPI_API_USER_PASSWORD")
+RASPI_API_SERVER_BASE_URL = os.environ.get("RASPI_API_SERVER_BASE_URL")

@@ -7,6 +7,7 @@ from rest_framework.request import Request
 
 from statuses.models import Status
 from .serializer import StatusesApiPOSTSerializer
+from raspi_client.apiclient import raspiApiClient
 
 from django.forms.models import model_to_dict
 
@@ -42,6 +43,11 @@ class StatusesAPIView(APIView):
             status_model = serializer.save()
             status_dict = model_to_dict(status_model)
             logger.info(status_dict)
+
+            if status_model.get_status_display() == "active":
+                raspiApiClient.start_system()
+            elif status_model.get_status_display() == "inactive":
+                raspiApiClient.stop_system()
 
             return Response(
                 status_dict,
