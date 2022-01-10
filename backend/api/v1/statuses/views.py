@@ -8,6 +8,7 @@ from rest_framework.request import Request
 from statuses.models import Status
 from .serializer import StatusesApiPOSTSerializer
 from raspi_client.apiclient import raspiApiClient
+from gps.models import Gps
 
 from django.forms.models import model_to_dict
 
@@ -45,7 +46,16 @@ class StatusesAPIView(APIView):
             logger.info(status_dict)
 
             if status_model.get_status_display() == "active":
-                raspiApiClient.start_system()
+                gpses = Gps.objects.filter().order_by("-occurred_at")[:1]
+                gps = gpses[0]
+                query = {}
+                if gps.get_trigger_type_display() == "exited":
+                    query = {"type": "out"}
+                elif gps.get_trigger_type_display() == "entered":
+                    query = {"type": "in"}
+                logger.info("gps: " + str(gps))
+                logger.info("query: " + str(query))
+                raspiApiClient.start_system(query)
             elif status_model.get_status_display() == "inactive":
                 raspiApiClient.stop_system()
 

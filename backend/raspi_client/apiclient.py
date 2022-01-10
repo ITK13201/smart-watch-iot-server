@@ -47,7 +47,7 @@ class RasPiApiClient:
         logger.info(response.text)
         return response
 
-    def start_system(self) -> requests.Response:
+    def start_system(self, query: dict) -> requests.Response:
         login_response = self.login()
         access_token = json.loads(login_response.text)["access_token"]
 
@@ -58,7 +58,6 @@ class RasPiApiClient:
                 "Content-Type": "application/json",
             },
         )
-        query = {}
         response = requests.post(url=url, headers=headers, data=json.dumps(query))
         logger.info(response.text)
         return response

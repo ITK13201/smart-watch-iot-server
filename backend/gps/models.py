@@ -5,6 +5,8 @@ TRIGGER_TYPE_CHOICES = ((0, "entered"), (1, "exited"))
 
 
 class Gps(models.Model):
+    objects = models.QuerySet
+
     id = models.BigAutoField(primary_key=True, editable=False)
     occurred_at = models.DateTimeField(_("occurred at"), blank=True, null=True)
     location_map_image_url = models.CharField(
