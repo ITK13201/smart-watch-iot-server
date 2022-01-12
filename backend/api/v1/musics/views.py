@@ -17,6 +17,9 @@ from django.forms.models import model_to_dict
 logger = logging.getLogger(__name__)
 
 
+HEART_RATE_ADDITION = 30
+
+
 class MusicsAPIView(APIView):
     authentication_classes = (authentication.BasicAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
@@ -48,7 +51,7 @@ class MusicsAPIView(APIView):
         musics = list(Music.objects.all().values())
         print(musics)
         bpm_list = [music["bpm"] for music in musics]
-        idx = np.abs(np.asarray(bpm_list) - heart_rate).argmin()
+        idx = np.abs(np.asarray(bpm_list) - (heart_rate + HEART_RATE_ADDITION)).argmin()
         return musics[idx]
 
     def post(self, request: Request) -> Response:
