@@ -31,7 +31,14 @@ cd smart-watch-iot-server
 ./scripts/environment/init.sh
 ```
 
-### 3. Build
+### 3. Obtain the Fitbit token
+
+1. create a new application at https://dev.fitbit.com/apps/new and set up OAuth 2.0 authentication.
+2. refer to https://dev.fitbit.com/build/reference/web-api/developer-guide/authorization/ to obtain an access token.
+3. Add the obtained access token (which should be returned in json format) to the `./docker/backend/conf/fitbit.tok`.
+
+
+### 4. Build
 
 ```shell
 docker-compose build
